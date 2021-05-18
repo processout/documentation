@@ -4,14 +4,12 @@ DISTRIBUTION=E3GA5RMWGG0DB3
 
 .PHONY: build
 build:
-	docker run -v $(shell pwd):/usr/src/app -p 4567:4567 -p 1234:1234 -it $(shell docker build -q .) middleman build
-
+	docker network list | grep processout || docker network create processout
+	docker compose up build
 .PHONY: test
 test:
-	@echo "####################################################"
-	@echo "## SERVER WILL BE HOSTED ON http://127.0.0.1:4567 ##"
-	@echo "####################################################"
-	docker run -v $(shell pwd):/usr/src/app -p 4567:4567 -p 1234:1234 -it $(shell docker build -q .) middleman server
+	docker network list | grep processout || docker network create processout
+	docker-compose up server
 
 .PHONY: deploy-staging
 deploy-staging: deploy

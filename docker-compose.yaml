@@ -1,0 +1,33 @@
+version: '3'
+services:
+  build:
+    container_name: po-docs-builder
+    build:
+      context: .
+    ports:
+      - 4567:4567
+      - 1234:1234
+    working_dir: /usr/src/app
+    volumes:
+      - .:/usr/src/app
+    command: sh -c "bundle update && middleman build"
+    networks:
+      - processout
+
+  server:
+    container_name: po-docs-server
+    build:
+      context: .
+    ports:
+      - 4567:4567
+      - 1234:1234
+    working_dir: /usr/src/app
+    volumes:
+      - .:/usr/src/app
+    command: sh -c "bundle update && middleman server"
+    networks:
+      - processout
+
+networks:
+  processout:
+    external: true

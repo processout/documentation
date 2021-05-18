@@ -1,8 +1,6 @@
-FROM ruby:2.3.4-onbuild
+FROM ruby:2.5-alpine
 
-COPY Gemfile /usr/src/app/
-COPY Gemfile.lock /usr/src/app/
+RUN apk update
+RUN apk add g++ make ruby-dev nodejs
 
-RUN bundle install
-
-CMD ["$@"]
+WORKDIR /usr/src/app
