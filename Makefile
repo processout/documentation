@@ -4,9 +4,11 @@ DISTRIBUTION=E3GA5RMWGG0DB3
 
 .PHONY: build
 build:
+	docker network list | grep processout || docker network create processout
 	docker compose up build
 .PHONY: test
 test:
+	docker network list | grep processout || docker network create processout
 	docker-compose up server
 
 .PHONY: deploy-staging
