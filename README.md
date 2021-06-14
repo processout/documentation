@@ -1,14 +1,10 @@
 # Documentation
 
-This is the Ruby version of the documentation.
-It is based on [Slate](https://github.com/slatedocs/slate) and helps you create beautiful, intelligent, responsive API documentation.
+This is the documentation website for [ProcessOut](https://www.processout.com) (https://docs.processout.com). It is based on [Slate](https://github.com/slatedocs/slate).
 
 # Prerequisites
 
-It is recommended to use [Homebrew](https://brew.sh) for package management. That only applies to macOS users.
-You can install Homebrew globally using `brew`.
-
-Next, we need to use Brew to install Ruby:
+This project relies on `Ruby`. For macOS users, it is recommended to use [Homebrew](https://brew.sh) to install it:
 
 ```shell
 $ brew install ruby
