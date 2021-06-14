@@ -1,22 +1,20 @@
 # Documentation
 
 This is the Ruby version of the documentation.
+It is based on [Slate](https://github.com/slatedocs/slate) and helps you create beautiful, intelligent, responsive API documentation.
 
 # Prerequisites
 
-This project uses [Brew](https://brew.sh/index_fr) for package management. You can install Brew globally using `brew`:
+It is recommended to use [Homebrew](https://brew.sh) for package management. That only applies to macOS users.
+You can install Homebrew globally using `brew`.
 
-```shell
-$ /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-```
-
-Next, we need to use Brew to install Ruby :
+Next, we need to use Brew to install Ruby:
 
 ```shell
 $ brew install ruby
 ```
 
-Next, we need to use [Bundler](https://bundler.io/) to install gems :
+Next, we need to use [RubyGems](https://rubygems.org) to install [Bundler](https://bundler.io):
 
 ```shell
 $ gem install bundler
@@ -28,13 +26,13 @@ Finally, we need to install [Docker](https://www.docker.com/) with this followin
 
 After completing the prerequisites process, you can use these following commands:
 
-First, clone the documentation repository :
+First, clone the documentation repository:
 
 ```shell
 $ git clone https://github.com/processout/documentation.git
 ```
 
-Next, we need to install the Ruby gems :
+Next, we need to install the Ruby gems:
 
 ```shell
 $ bundle install
@@ -46,7 +44,7 @@ Next, open Docker on your computer and run this following line :
 $ make build
 ```
 
-Finally, you need to create an external network named Processout :
+Finally, you need to create an external network named Processout:
 
 ```shell
 $ docker network create processout
@@ -78,4 +76,4 @@ Similarly, production deployments can be done using by running this:
 $ make deploy-production
 ```
 
-Welcome on board !
+Welcome on board!
