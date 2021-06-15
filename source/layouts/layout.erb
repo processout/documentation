@@ -253,44 +253,33 @@
                     setCookie("selected-language-front", "javascript", 7);
                 }
 
-                function refreshSelectors() {
-                    $(".language-selector").each(function() {
-                        $(this).find("a").removeClass("selected");
-                        $(this).find("a[data-language="+getCookie("selected-language")+"]").addClass("selected");
+                function refresher(lang, selector, context){
+                    let el = $(context)
+                    let wrapper = el.parent(selector);
 
-                        $(this).parent(".language-selector-wrapper").find(
-                            ".highlight").parent().addClass("hide");
-                        $(this).parent(".language-selector-wrapper").find(
-                            ".highlight."+getCookie("selected-language")).parent().removeClass("hide");
+                    el.find("a").removeClass("selected");
+                    el.find("a[data-language="+lang+"]").addClass("selected");
+
+                    wrapper.find("div.highlight").addClass("hide");
+                    wrapper.find(".highlight."+lang).parent().removeClass("hide");
+                    wrapper.removeClass("hide")
+                }
+
+                function refreshSelectors() {
+                    let selector = '.language-selector-wrapper'
+                    $(".language-selector").each(function() {
+                        refresher(getCookie("selected-language"), selector, this)
                     });
                     $(".language-selector-preview").each(function() {
-                        $(this).find("a").removeClass("selected");
-                        $(this).find("a[data-language="+getCookie("selected-language-preview")+"]").addClass("selected");
-
-                        $(this).parent(".language-selector-wrapper").find(
-                            ".highlight").parent().addClass("hide");
-                        $(this).parent(".language-selector-wrapper").find(
-                            ".highlight."+getCookie("selected-language-preview")).parent().removeClass("hide");
+                        refresher(getCookie("selected-language-preview"), selector, this)
                     });
                     $(".language-selector-mobile").each(function() {
-                        $(this).find("a").removeClass("selected");
-                        $(this).find("a[data-language="+getCookie("selected-language-mobile")+"]").addClass("selected");
-
-                        $(this).parent(".language-selector-wrapper").find(
-                            ".highlight").parent().addClass("hide");
-                        $(this).parent(".language-selector-wrapper").find(
-                            ".highlight."+getCookie("selected-language-mobile")).parent().removeClass("hide");
+                        refresher(getCookie("selected-language-mobile"), selector, this)
                     });
                     $(".language-selector-front").each(function() {
-                        $(this).find("a").removeClass("selected");
-                        $(this).find("a[data-language="+getCookie("selected-language-front")+"]").addClass("selected");
-
-                        $(this).parent(".language-selector-wrapper").find(
-                            ".highlight").parent().addClass("hide");
-                        $(this).parent(".language-selector-wrapper").find(
-                            ".highlight."+getCookie("selected-language-front")).parent().removeClass("hide");
+                        refresher(getCookie("selected-language-front"), selector, this)
                     });
-                };
+                }
                 refreshSelectors();
 
                 $(".language-selector a").click(function() {
