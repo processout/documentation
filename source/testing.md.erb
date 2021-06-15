@@ -91,6 +91,12 @@ the expiry date and CVC code of the cards will not be checked.
 <div style="white-space: nowrap; color: #795da3;" class="console-font">4000 0000 0000 3220</div> | 3-D Secure v2 supported with fingerprint failing
 <div style="white-space: nowrap; color: #795da3;" class="console-font">4000 0000 0000 3253</div> | 3-D Secure v2 required for SCA, no authentication when Merchant Initiated Transaction
 <div style="white-space: nowrap; color: #795da3;" class="console-font">4000 0000 0000 3246</div> | 3-D Secure v1 required but v2 not supported
+ | *Cards that will have an authorization special behaviour:*
+<div style="white-space: nowrap; color: #795da3;" class="console-font">4000 0000 0000 2180</div> | The authorization on the card will fail with error code `card.do-not-honor`
+<div style="white-space: nowrap; color: #795da3;" class="console-font">4000 0000 0000 2198</div> | The authorization on the card will fail with error code `card.possible-fraud`
+<div style="white-space: nowrap; color: #795da3;" class="console-font">4000 0000 0000 2206</div> | The authorization on the card will fail with error code `card.no-money`
+<div style="white-space: nowrap; color: #795da3;" class="console-font">4000 0000 0000 2214</div> | The authorization on the card will fail with error code `card.expired`
+<div style="white-space: nowrap; color: #795da3;" class="console-font">4000 0000 0000 2222</div> | The authorization on the card will fail with error code `card.stolen`
  | *Cards that will have a special behaviour:*
 <div style="white-space: nowrap; color: #795da3;" class="console-font">4000 0000 0000 0002</div> | The credit card will be denied
 <div style="white-space: nowrap; color: #795da3;" class="console-font">4000 0000 0000 0010</div> | The authorization on the card will be successful, but any capture will fail
