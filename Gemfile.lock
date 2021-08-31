@@ -96,7 +96,7 @@ GEM
     mini_portile2 (2.6.1)
     minitest (5.14.4)
     multi_json (1.15.0)
-    nokogiri (1.12.3)
+    nokogiri (1.12.4)
       mini_portile2 (~> 2.6.1)
       racc (~> 1.4)
     padrino-helpers (0.12.9)
