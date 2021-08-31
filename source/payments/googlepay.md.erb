@@ -15,17 +15,17 @@ Before integrating Google Pay and tokenizing the cards of your customers, you mu
 integrated with Google directly. There are a few pre-requisites you must complete prior
 to start initiating transactions using Google Pay on ProcessOut.
 
-### 1. Integrate with Google Pay
+## 1. Integrate with Google Pay
 To start things off, you must firstly integrate directly with [Google Pay &nearr;]
 (https://developers.google.com/pay/api). Depending on the type of integration you require,
 web or android, there are these following guides which will assist you:
 
-#### Android devices
+### Android devices
 * [Google Pay Android developer documentation &nearr;](https://developers.google.com/pay/api/android/)
 * [Google Pay Android integration checklist &nearr;](https://developers.google.com/pay/api/android/)
 * [Google Pay Android brand guidelines &nearr;](https://developers.google.com/pay/api/android/guides/brand-guidelines)
 
-#### Web
+### Web
 * [Google Pay Android developer documentation &nearr;](https://developers.google.com/pay/api/web/)
 * [Google Pay Android integration checklist &nearr;](https://developers.google.com/pay/api/web/guides/test-and-deploy/integration-checklist)
 * [Google Pay Android brand guidelines &nearr;](https://developers.google.com/pay/api/web/guides/brand-guidelines)
@@ -71,29 +71,29 @@ supports both authorization methods: `PAN_ONLY` and `CRYPTOGRAM_3DS`. We also do
 allowed card networks, as this is a constraint provided by the PSP. Please refer to them to
 confirm which card networks they support.
 
-### 2. Create a ProcessOut card token using a Google Pay token
+## 2. Create a ProcessOut card token using a Google Pay token
 When a Google Pay transaction is successfully initiated, a token will be returned from Google.
 This [token &nearr;](https://developers.google.com/pay/api/web/reference/response-objects#PaymentMethodTokenizationData)
 will be available as a JSON object string at: `paymentMethodData.tokenizationData.token`.
 This token is what is required by ProcessOut in order to process the payment method.
 
-#### Android
+### Android
 We provide an [Android SDK &nearr;](https://docs.processout.com/payments/mobile-sdks-reference/) in order
 for you to generate a card token, which can then be passed to your backend to process payments.
 The request will require you to base64encode the Google Pay token (JSON object string) received from the steps
 above.
 
-##### Example Google Pay Token
+#### Example Google Pay Token
 ```
 {"signature":"MEUCIQDi3Yy3uEf9EvOodY43dvlalWRp4t4kS/r3MJMFZZS09QIgS/3yLTSKjF+kmGJiXIKdfmaR8r8aaZEAcI4OlCySPs0\u003d","intermediateSigningKey":{"signedKey":"{\"keyValue\":\"MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEd0iHKh9XaxOKYFvGvrMHbXk3/Sig0ofeDBCiBmnu2Y5OvB2DU9Fyikd3sujtGm7WkfXbQ7rm5PLEr9jBXS7H2g\\u003d\\u003d\",\"keyExpiration\":\"1631090989783\"}","signatures":["MEYCIQCbTLYYpNmu/B2HVFuSHQ6kE/wa5g+eqTULpaRmc+2WGAIhAIQxFgxrgy3NAUXDVRv58wISpiyDrhQy8jx1HxtHWfpb"]},"protocolVersion":"ECv2","signedMessage":"{\"encryptedMessage\":\"sme1OeYeVwkc7lZfK1tT25KCrj1/pZDRXyCFvF9BCBXD6UQbP9+owMc1u7EIQ20j8i1uA2PIeivIxDfBkKMOgFdIyQliTuN4VO/x5r82gW0BOdRwwyWDL5TP+3HdGJ+hSMk/h1n6a1DmnNqjJKPe64Say4jlhOdY/X6k297Je9NO5eIsz/JBDfdl7KzNhARQsDFXaB03SrbtvEtOflQ9pWNDCuCKgDwL9cY5+OmqZrWW32F6N9RzeX9rpnq+p0t17n4F9ogstgQ52eh+El3BjR+78NimK2jLjFHHI5pWEpGlrshS+oQEgPS5tc4l2iES1IZIV2ZsfH7Gb1+ecBCgjhQyZQOw2fwB3jkVz5dOjASoYrTKRnJyNbWhIcjDmDSwzqq08JmX1KdShglZaCFYmIujKSV5Pa6ESUxrWuQU0T0FMzLEsOlJj1/muu2jEDVhBA4XVL3qmHHOQkU85cZU77JtbU1fMUypzPW6BGL5jQmGL5TDQa+5TDV0dHL8wLITRkbsa0VyLQtSLUSZ9A\\u003d\\u003d\",\"ephemeralPublicKey\":\"BBca3VePV8f6Y64YhTsuwsWo79EOKimbPnViqoHz+5WYR/1dtZu2kIMNsybNZlwnbi7n2keoVgEyh2vSRBEsW+o\\u003d\",\"tag\":\"PsKT9TGD6+f99dnnoZh0zTVge1U+s1cN1kn+g0cAUbc\\u003d\"}"}
 ```
 
-##### Example Base64encoded token
+#### Example Base64encoded token
 ```
 eyJzaWduYXR1cmUiOiJNRVVDSVFEaTNZeTN1RWY5RXZPb2RZNDNkdmxhbFdScDR0NGtTL3IzTUpNRlpaUzA5UUlnUy8zeUxUU0tqRitrbUdKaVhJS2RmbWFSOHI4YWFaRUFjSTRPbEN5U1BzMFx1MDAzZCIsImludGVybWVkaWF0ZVNpZ25pbmdLZXkiOnsic2lnbmVkS2V5Ijoie1wia2V5VmFsdWVcIjpcIk1Ga3dFd1lIS29aSXpqMENBUVlJS29aSXpqMERBUWNEUWdBRWQwaUhLaDlYYXhPS1lGdkd2ck1IYlhrMy9TaWcwb2ZlREJDaUJtbnUyWTVPdkIyRFU5Rnlpa2Qzc3VqdEdtN1drZlhiUTdybTVQTEVyOWpCWFM3SDJnXFx1MDAzZFxcdTAwM2RcIixcImtleUV4cGlyYXRpb25cIjpcIjE2MzEwOTA5ODk3ODNcIn0iLCJzaWduYXR1cmVzIjpbIk1FWUNJUUNiVExZWXBObXUvQjJIVkZ1U0hRNmtFL3dhNWcrZXFUVUxwYVJtYysyV0dBSWhBSVF4Rmd4cmd5M05BVVhEVlJ2NTh3SVNwaXlEcmhReThqeDFIeHRIV2ZwYiJdfSwicHJvdG9jb2xWZXJzaW9uIjoiRUN2MiIsInNpZ25lZE1lc3NhZ2UiOiJ7XCJlbmNyeXB0ZWRNZXNzYWdlXCI6XCJzbWUxT2VZZVZ3a2M3bFpmSzF0VDI1S0NyajEvcFpEUlh5Q0Z2RjlCQ0JYRDZVUWJQOStvd01jMXU3RUlRMjBqOGkxdUEyUEllaXZJeERmQmtLTU9nRmRJeVFsaVR1TjRWTy94NXI4MmdXMEJPZFJ3d3lXREw1VFArM0hkR0oraFNNay9oMW42YTFEbW5OcWpKS1BlNjRTYXk0amxoT2RZL1g2azI5N0plOU5PNWVJc3ovSkJEZmRsN0t6TmhBUlFzREZYYUIwM1NyYnR2RXRPZmxROXBXTkRDdUNLZ0R3TDljWTUrT21xWnJXVzMyRjZOOVJ6ZVg5cnBucStwMHQxN240RjlvZ3N0Z1E1MmVoK0VsM0JqUis3OE5pbUsyakxqRkhISTVwV0VwR2xyc2hTK29RRWdQUzV0YzRsMmlFUzFJWklWMlpzZkg3R2IxK2VjQkNnamhReVpRT3cyZndCM2prVno1ZE9qQVNvWXJUS1JuSnlOYldoSWNqRG1EU3d6cXEwOEptWDFLZFNoZ2xaYUNGWW1JdWpLU1Y1UGE2RVNVeHJXdVFVMFQwRk16TEVzT2xKajEvbXV1MmpFRFZoQkE0WFZMM3FtSEhPUWtVODVjWlU3N0p0YlUxZk1VeXB6UFc2QkdMNWpRbUdMNVREUWErNVREVjBkSEw4d0xJVFJrYnNhMFZ5TFF0U0xVU1o5QVxcdTAwM2RcXHUwMDNkXCIsXCJlcGhlbWVyYWxQdWJsaWNLZXlcIjpcIkJCY2EzVmVQVjhmNlk2NFloVHN1d3NXbzc5RU9LaW1iUG5WaXFvSHorNVdZUi8xZHRadTJrSU1Oc3liTlpsd25iaTduMmtlb1ZnRXloMnZTUkJFc1crb1xcdTAwM2RcIixcInRhZ1wiOlwiUHNLVDlUR0Q2K2Y5OWRubm9aaDB6VFZnZTFVK3MxY04xa24rZzBjQVViY1xcdTAwM2RcIn0ifQo=
 ```
 
-##### Example code
+#### Example code
 ```java
 // First create a card object containing the Google Pay token details
 Card card = new Card(Card.TokenType.googlepay, "base64encoded Google Pay token");
@@ -112,12 +112,12 @@ client.tokenize(card, new TokenCallback() {
 });
 ```
 ---
-#### Web
+### Web
 We provide a [ProcessOut.js &nearr;](https://docs.processout.com/payments/processoutjs-reference/) which can handle creating a card token for you. The support for
 Google Pay within our javascript is still work in progress, and will be released soon!
 
 
-### 3. Charge the customer
+## 3. Charge the customer
 Once you have successfully tokenized the Google Pay token on ProcessOut, you will receive back
 a `card.id`. This can be sent to your backend, and can be used to [charge your customers &nearr;](https://docs.processout.com/payments/capture-a-payment/)
 or [save it on a customer token &nearr;](https://docs.processout.ninja/payments/save-token-and-capture-later/#step-2-create-a-customer-token)
