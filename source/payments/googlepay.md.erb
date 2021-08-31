@@ -30,7 +30,7 @@ web or android, there are these following guides which will assist you:
 * [Google Pay Android integration checklist &nearr;](https://developers.google.com/pay/api/web/guides/test-and-deploy/integration-checklist)
 * [Google Pay Android brand guidelines &nearr;](https://developers.google.com/pay/api/web/guides/brand-guidelines)
 
-#### ProcessOut Specifics
+### ProcessOut Specifics
 When you submit your request to Google Pay there are a few parameters that have to be filled
 with specific values, namely the following fields:
 
@@ -39,7 +39,7 @@ with specific values, namely the following fields:
 "gatewayMerchantId" : "<your project ID (include the 'test-' prefix for sandbox mode transactions)>"
 ```
 
-##### Example code
+#### Example code
 ```json
 {
   "type": "CARD",
@@ -68,8 +68,8 @@ with specific values, namely the following fields:
 
 As seen in the example above, there are also other customizable fields present. ProcessOut
 supports both authorization methods: `PAN_ONLY` and `CRYPTOGRAM_3DS`. We also do not restrict the
-allowed card networks, as this is a constraint provided by the PSP. So please refer to the PSP
-you wish to connect with to confirm which card networks they support.
+allowed card networks, as this is a constraint provided by the PSP. Please refer to them to
+confirm which card networks they support.
 
 ### 2. Create a ProcessOut card token using a Google Pay token
 When a Google Pay transaction is successfully initiated, a token will be returned from Google.
@@ -85,12 +85,12 @@ above.
 
 ##### Example Google Pay Token
 ```
-{"signature":"MEQCIGGeUqxqlbOewwcPUwUFMoc+xlXmrE5vyjdzS9UUH/GEAiBeIMyUTiHNNa+kX5z4OJ6vPCGnGok8tGzh3L4hv7Aa9w\u003d\u003d","intermediateSigningKey":{"signedKey":"{\"keyValue\":\"MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEYc8+0o5Sj9ClhuOPUG9qvSlj7oPeNRd7fbwVkYlL2G74gGNpSlDCsPNzFZAL2D+HXYzEnejgDbTeewtlFgUQUQ\\u003d\\u003d\",\"keyExpiration\":\"1631058056224\"}","signatures":["MEQCIAbZ9l39cE+d/Ik/tM7gcIaOtq4EgNEB6tqpROuVwa4uAiAW87T0THH69m/cCnnzqVh2UnyONwQlrlw1zlDKXNHVtA\u003d\u003d"]},"protocolVersion":"ECv2","signedMessage":"{\"encryptedMessage\":\"6YGRRILGdWVu6xpb6sgN1K031YvojUqB3gaRKWAlEQfnYK9h7dsjFE7KIjwOQ1yy4DxnW4Mnftf559DtXheMMCB6UT0hTVHbgZWPL57M4X6UmaewcKnJt+6c9x3jnNE5Jo5T0eWcIebE6YS3J6RgrYxhjf8B91hjEHfd9EIYvPOn0/BAeqQDgNzoZLr7BTMk4J836rqDUeYMYRcN3F2R8ubpml4aWrp4OipHY3HiddTf/zTKbcZC2IQy8PL23ZM33ycA4xDSrf4ssAD9mbSsqRHRD0JZ6Ub/W7w/eWzeLY0ewlKBuILSfGsr9/A7w/pU+O9DCfRsOKN28i9VHgqUoWzZbrDm+5weihTtFoP4dJN5rRvR9HGC77a02ywtGWOgs1wgX/Tvn+muxpowqDpP+Ak1ZSF8FT8qLN+cywzbUXX4aFCdkHjxt2+SdzrOZLNKEr6Xaux/lb+DF98mMC67Rqja8HCPv8pKJjbrT8sN4em8FlQZkojriPcHM8m8rPHu6Wlrc3k6+NSoAe1FUw\\u003d\\u003d\",\"ephemeralPublicKey\":\"BMWfxvoLONfIjxo/UhzvMR6IqLvDVrBInKKmSvbX52BqdXdU1C5P6mC7/KaWFMalnW9+qRm22RM5pmsSwk34PhU\\u003d\",\"tag\":\"hYLdbT5MaoH33APuQof8zNu0kN45ed5FwJMAfxDlkHA\\u003d\"}"}
+{"signature":"MEUCIQDi3Yy3uEf9EvOodY43dvlalWRp4t4kS/r3MJMFZZS09QIgS/3yLTSKjF+kmGJiXIKdfmaR8r8aaZEAcI4OlCySPs0\u003d","intermediateSigningKey":{"signedKey":"{\"keyValue\":\"MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEd0iHKh9XaxOKYFvGvrMHbXk3/Sig0ofeDBCiBmnu2Y5OvB2DU9Fyikd3sujtGm7WkfXbQ7rm5PLEr9jBXS7H2g\\u003d\\u003d\",\"keyExpiration\":\"1631090989783\"}","signatures":["MEYCIQCbTLYYpNmu/B2HVFuSHQ6kE/wa5g+eqTULpaRmc+2WGAIhAIQxFgxrgy3NAUXDVRv58wISpiyDrhQy8jx1HxtHWfpb"]},"protocolVersion":"ECv2","signedMessage":"{\"encryptedMessage\":\"sme1OeYeVwkc7lZfK1tT25KCrj1/pZDRXyCFvF9BCBXD6UQbP9+owMc1u7EIQ20j8i1uA2PIeivIxDfBkKMOgFdIyQliTuN4VO/x5r82gW0BOdRwwyWDL5TP+3HdGJ+hSMk/h1n6a1DmnNqjJKPe64Say4jlhOdY/X6k297Je9NO5eIsz/JBDfdl7KzNhARQsDFXaB03SrbtvEtOflQ9pWNDCuCKgDwL9cY5+OmqZrWW32F6N9RzeX9rpnq+p0t17n4F9ogstgQ52eh+El3BjR+78NimK2jLjFHHI5pWEpGlrshS+oQEgPS5tc4l2iES1IZIV2ZsfH7Gb1+ecBCgjhQyZQOw2fwB3jkVz5dOjASoYrTKRnJyNbWhIcjDmDSwzqq08JmX1KdShglZaCFYmIujKSV5Pa6ESUxrWuQU0T0FMzLEsOlJj1/muu2jEDVhBA4XVL3qmHHOQkU85cZU77JtbU1fMUypzPW6BGL5jQmGL5TDQa+5TDV0dHL8wLITRkbsa0VyLQtSLUSZ9A\\u003d\\u003d\",\"ephemeralPublicKey\":\"BBca3VePV8f6Y64YhTsuwsWo79EOKimbPnViqoHz+5WYR/1dtZu2kIMNsybNZlwnbi7n2keoVgEyh2vSRBEsW+o\\u003d\",\"tag\":\"PsKT9TGD6+f99dnnoZh0zTVge1U+s1cN1kn+g0cAUbc\\u003d\"}"}
 ```
 
 ##### Example Base64encoded token
 ```
-eyJzaWduYXR1cmUiOiJNRVFDSUdHZVVxeHFsYk9ld3djUFV3VUZNb2MreGxYbXJFNXZ5amR6UzlVVUgvR0VBaUJlSU15VVRpSE5OYStrWDV6NE9KNnZQQ0duR29rOHRHemgzTDRodjdBYTl3XHUwMDNkXHUwMDNkIiwiaW50ZXJtZWRpYXRlU2lnbmluZ0tleSI6eyJzaWduZWRLZXkiOiJ7XCJrZXlWYWx1ZVwiOlwiTUZrd0V3WUhLb1pJemowQ0FRWUlLb1pJemowREFRY0RRZ0FFWWM4KzBvNVNqOUNsaHVPUFVHOXF2U2xqN29QZU5SZDdmYndWa1lsTDJHNzRnR05wU2xEQ3NQTnpGWkFMMkQrSFhZekVuZWpnRGJUZWV3dGxGZ1VRVVFcXHUwMDNkXFx1MDAzZFwiLFwia2V5RXhwaXJhdGlvblwiOlwiMTYzMTA1ODA1NjIyNFwifSIsInNpZ25hdHVyZXMiOlsiTUVRQ0lBYlo5bDM5Y0UrZC9Jay90TTdnY0lhT3RxNEVnTkVCNnRxcFJPdVZ3YTR1QWlBVzg3VDBUSEg2OW0vY0NubnpxVmgyVW55T053UWxybHcxemxES1hOSFZ0QVx1MDAzZFx1MDAzZCJdfSwicHJvdG9jb2xWZXJzaW9uIjoiRUN2MiIsInNpZ25lZE1lc3NhZ2UiOiJ7XCJlbmNyeXB0ZWRNZXNzYWdlXCI6XCI2WUdSUklMR2RXVnU2eHBiNnNnTjFLMDMxWXZvalVxQjNnYVJLV0FsRVFmbllLOWg3ZHNqRkU3S0lqd09RMXl5NER4blc0TW5mdGY1NTlEdFhoZU1NQ0I2VVQwaFRWSGJnWldQTDU3TTRYNlVtYWV3Y0tuSnQrNmM5eDNqbk5FNUpvNVQwZVdjSWViRTZZUzNKNlJncll4aGpmOEI5MWhqRUhmZDlFSVl2UE9uMC9CQWVxUURnTnpvWkxyN0JUTWs0SjgzNnJxRFVlWU1ZUmNOM0YyUjh1YnBtbDRhV3JwNE9pcEhZM0hpZGRUZi96VEtiY1pDMklReThQTDIzWk0zM3ljQTR4RFNyZjRzc0FEOW1iU3NxUkhSRDBKWjZVYi9XN3cvZVd6ZUxZMGV3bEtCdUlMU2ZHc3I5L0E3dy9wVStPOURDZlJzT0tOMjhpOVZIZ3FVb1d6WmJyRG0rNXdlaWhUdEZvUDRkSk41clJ2UjlIR0M3N2EwMnl3dEdXT2dzMXdnWC9Udm4rbXV4cG93cURwUCtBazFaU0Y4RlQ4cUxOK2N5d3piVVhYNGFGQ2RrSGp4dDIrU2R6ck9aTE5LRXI2WGF1eC9sYitERjk4bU1DNjdScWphOEhDUHY4cEtKamJyVDhzTjRlbThGbFFaa29qcmlQY0hNOG04clBIdTZXbHJjM2s2K05Tb0FlMUZVd1xcdTAwM2RcXHUwMDNkXCIsXCJlcGhlbWVyYWxQdWJsaWNLZXlcIjpcIkJNV2Z4dm9MT05mSWp4by9VaHp2TVI2SXFMdkRWckJJbktLbVN2Ylg1MkJxZFhkVTFDNVA2bUM3L0thV0ZNYWxuVzkrcVJtMjJSTTVwbXNTd2szNFBoVVxcdTAwM2RcIixcInRhZ1wiOlwiaFlMZGJUNU1hb0gzM0FQdVFvZjh6TnUwa040NWVkNUZ3Sk1BZnhEbGtIQVxcdTAwM2RcIn0ifQo=
+eyJzaWduYXR1cmUiOiJNRVVDSVFEaTNZeTN1RWY5RXZPb2RZNDNkdmxhbFdScDR0NGtTL3IzTUpNRlpaUzA5UUlnUy8zeUxUU0tqRitrbUdKaVhJS2RmbWFSOHI4YWFaRUFjSTRPbEN5U1BzMFx1MDAzZCIsImludGVybWVkaWF0ZVNpZ25pbmdLZXkiOnsic2lnbmVkS2V5Ijoie1wia2V5VmFsdWVcIjpcIk1Ga3dFd1lIS29aSXpqMENBUVlJS29aSXpqMERBUWNEUWdBRWQwaUhLaDlYYXhPS1lGdkd2ck1IYlhrMy9TaWcwb2ZlREJDaUJtbnUyWTVPdkIyRFU5Rnlpa2Qzc3VqdEdtN1drZlhiUTdybTVQTEVyOWpCWFM3SDJnXFx1MDAzZFxcdTAwM2RcIixcImtleUV4cGlyYXRpb25cIjpcIjE2MzEwOTA5ODk3ODNcIn0iLCJzaWduYXR1cmVzIjpbIk1FWUNJUUNiVExZWXBObXUvQjJIVkZ1U0hRNmtFL3dhNWcrZXFUVUxwYVJtYysyV0dBSWhBSVF4Rmd4cmd5M05BVVhEVlJ2NTh3SVNwaXlEcmhReThqeDFIeHRIV2ZwYiJdfSwicHJvdG9jb2xWZXJzaW9uIjoiRUN2MiIsInNpZ25lZE1lc3NhZ2UiOiJ7XCJlbmNyeXB0ZWRNZXNzYWdlXCI6XCJzbWUxT2VZZVZ3a2M3bFpmSzF0VDI1S0NyajEvcFpEUlh5Q0Z2RjlCQ0JYRDZVUWJQOStvd01jMXU3RUlRMjBqOGkxdUEyUEllaXZJeERmQmtLTU9nRmRJeVFsaVR1TjRWTy94NXI4MmdXMEJPZFJ3d3lXREw1VFArM0hkR0oraFNNay9oMW42YTFEbW5OcWpKS1BlNjRTYXk0amxoT2RZL1g2azI5N0plOU5PNWVJc3ovSkJEZmRsN0t6TmhBUlFzREZYYUIwM1NyYnR2RXRPZmxROXBXTkRDdUNLZ0R3TDljWTUrT21xWnJXVzMyRjZOOVJ6ZVg5cnBucStwMHQxN240RjlvZ3N0Z1E1MmVoK0VsM0JqUis3OE5pbUsyakxqRkhISTVwV0VwR2xyc2hTK29RRWdQUzV0YzRsMmlFUzFJWklWMlpzZkg3R2IxK2VjQkNnamhReVpRT3cyZndCM2prVno1ZE9qQVNvWXJUS1JuSnlOYldoSWNqRG1EU3d6cXEwOEptWDFLZFNoZ2xaYUNGWW1JdWpLU1Y1UGE2RVNVeHJXdVFVMFQwRk16TEVzT2xKajEvbXV1MmpFRFZoQkE0WFZMM3FtSEhPUWtVODVjWlU3N0p0YlUxZk1VeXB6UFc2QkdMNWpRbUdMNVREUWErNVREVjBkSEw4d0xJVFJrYnNhMFZ5TFF0U0xVU1o5QVxcdTAwM2RcXHUwMDNkXCIsXCJlcGhlbWVyYWxQdWJsaWNLZXlcIjpcIkJCY2EzVmVQVjhmNlk2NFloVHN1d3NXbzc5RU9LaW1iUG5WaXFvSHorNVdZUi8xZHRadTJrSU1Oc3liTlpsd25iaTduMmtlb1ZnRXloMnZTUkJFc1crb1xcdTAwM2RcIixcInRhZ1wiOlwiUHNLVDlUR0Q2K2Y5OWRubm9aaDB6VFZnZTFVK3MxY04xa24rZzBjQVViY1xcdTAwM2RcIn0ifQo=
 ```
 
 ##### Example code
@@ -120,3 +120,4 @@ Google Pay within our javascript is still work in progress, and will be released
 ### 3. Charge the customer
 Once you have successfully tokenized the Google Pay token on ProcessOut, you will receive back
 a `card.id`. This can be sent to your backend, and can be used to [charge your customers &nearr;](https://docs.processout.com/payments/capture-a-payment/)
+or [save it on a customer token &nearr;](https://docs.processout.ninja/payments/save-token-and-capture-later/#step-2-create-a-customer-token)
