@@ -26,9 +26,9 @@ web or android, there are these following guides which will assist you:
 * [Google Pay Android brand guidelines &nearr;](https://developers.google.com/pay/api/android/guides/brand-guidelines)
 
 ### Web
-* [Google Pay Android developer documentation &nearr;](https://developers.google.com/pay/api/web/)
-* [Google Pay Android integration checklist &nearr;](https://developers.google.com/pay/api/web/guides/test-and-deploy/integration-checklist)
-* [Google Pay Android brand guidelines &nearr;](https://developers.google.com/pay/api/web/guides/brand-guidelines)
+* [Google Pay web developer documentation &nearr;](https://developers.google.com/pay/api/web/)
+* [Google Pay web integration checklist &nearr;](https://developers.google.com/pay/api/web/guides/test-and-deploy/integration-checklist)
+* [Google Pay web brand guidelines &nearr;](https://developers.google.com/pay/api/web/guides/brand-guidelines)
 
 ### ProcessOut Specifics
 When you submit your request to Google Pay there are a few parameters that have to be filled
@@ -113,16 +113,16 @@ client.tokenize(card, new TokenCallback() {
 ```
 ---
 ### Web
-We provide a [ProcessOut.js &nearr;](https://docs.processout.com/payments/processoutjs-reference/)
-which can handle creating a ProcessOut card token for you. In order to make use of ProcessOut.js
-you must firstly load the javascript on your page. It is recommended to always load it from our
+We provide [ProcessOut.js &nearr;](https://docs.processout.com/payments/processoutjs-reference/)
+which can handle creating a ProcessOut Google Pay™ token for you. In order to make use of ProcessOut.js
+you must first load the javascript on your page. It is mandatory for regulation reasons to always load it from our
 CDN as shown below, to ensure you always have the latest version.
 
 ```html
 <script src="https://js.processout.com/processout.js"></script>
 ```
 
-You can now generate your customer card token, using the below example code as a basis.
+You can now generate your customer's Google Pay™ token, using the below example code as a basis.
 It is important to note that there is no need to base64encode the Google Pay token when
 using ProcessOut.js, as this is handled by the javascript code.
 
