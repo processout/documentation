@@ -113,9 +113,41 @@ client.tokenize(card, new TokenCallback() {
 ```
 ---
 ### Web
-We provide a [ProcessOut.js &nearr;](https://docs.processout.com/payments/processoutjs-reference/) which can handle creating a card token for you. The support for
-Google Pay within our javascript is still work in progress, and will be released soon!
+We provide a [ProcessOut.js &nearr;](https://docs.processout.com/payments/processoutjs-reference/)
+which can handle creating a ProcessOut card token for you. In order to make use of ProcessOut.js
+you must firstly load the javascript on your page. It is recommended to always load it from our
+CDN as shown below, to ensure you always have the latest version.
 
+```html
+<script src="https://js.processout.com/processout.js"></script>
+```
+
+You can now generate your customer card token, using the below example code as a basis.
+It is important to note that there is no need to base64encode the Google Pay token when
+using ProcessOut.js, as this is handled by the javascript code.
+
+#### Example code
+```js
+var client = new ProcessOut.ProcessOut("test-proj_gAO1Uu0ysZJvDuUpOGPkUBeE3pGalk3x");
+// Note: payload is set to the Google Pay token received from the steps above
+var payload = {
+    "signature": "MEUCIQDi3Yy3uEf9EvOodY43dvlalWRp4t4kS/r3MJMFZZS09QIgS/3yLTSKjF+kmGJiXIKdfmaR8r8aaZEAcI4OlCySPs0\u003d",
+    "intermediateSigningKey": {
+        "signedKey": "{\"keyValue\":\"MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEd0iHKh9XaxOKYFvGvrMHbXk3/Sig0ofeDBCiBmnu2Y5OvB2DU9Fyikd3sujtGm7WkfXbQ7rm5PLEr9jBXS7H2g\\u003d\\u003d\",\"keyExpiration\":\"1631090989783\"}",
+        "signatures": ["MEYCIQCbTLYYpNmu/B2HVFuSHQ6kE/wa5g+eqTULpaRmc+2WGAIhAIQxFgxrgy3NAUXDVRv58wISpiyDrhQy8jx1HxtHWfpb"]
+    },
+    "protocolVersion": "ECv2",
+    "signedMessage": "{\"encryptedMessage\":\"sme1OeYeVwkc7lZfK1tT25KCrj1/pZDRXyCFvF9BCBXD6UQbP9+owMc1u7EIQ20j8i1uA2PIeivIxDfBkKMOgFdIyQliTuN4VO/x5r82gW0BOdRwwyWDL5TP+3HdGJ+hSMk/h1n6a1DmnNqjJKPe64Say4jlhOdY/X6k297Je9NO5eIsz/JBDfdl7KzNhARQsDFXaB03SrbtvEtOflQ9pWNDCuCKgDwL9cY5+OmqZrWW32F6N9RzeX9rpnq+p0t17n4F9ogstgQ52eh+El3BjR+78NimK2jLjFHHI5pWEpGlrshS+oQEgPS5tc4l2iES1IZIV2ZsfH7Gb1+ecBCgjhQyZQOw2fwB3jkVz5dOjASoYrTKRnJyNbWhIcjDmDSwzqq08JmX1KdShglZaCFYmIujKSV5Pa6ESUxrWuQU0T0FMzLEsOlJj1/muu2jEDVhBA4XVL3qmHHOQkU85cZU77JtbU1fMUypzPW6BGL5jQmGL5TDQa+5TDV0dHL8wLITRkbsa0VyLQtSLUSZ9A\\u003d\\u003d\",\"ephemeralPublicKey\":\"BBca3VePV8f6Y64YhTsuwsWo79EOKimbPnViqoHz+5WYR/1dtZu2kIMNsybNZlwnbi7n2keoVgEyh2vSRBEsW+o\\u003d\",\"tag\":\"PsKT9TGD6+f99dnnoZh0zTVge1U+s1cN1kn+g0cAUbc\\u003d\"}"
+};
+var token = new ProcessOut.PaymentToken(ProcessOut.TokenType.GooglePay, payload)
+client.tokenize(token, {},
+    function(token) {
+        document.getElementById("success").innerHTML = "Success! Your created card token is " + token;
+    },
+    function(err) {
+        document.getElementById("errors").innerHTML = err.message;
+    });
+```
 
 ## 3. Charge the customer
 Once you have successfully tokenized the Google Pay token on ProcessOut, you will receive back

@@ -36,7 +36,7 @@ GEM
     erubis (2.7.0)
     eventmachine (1.2.7)
     execjs (2.8.1)
-    ffi (1.15.3)
+    ffi (1.15.4)
     haml (5.2.2)
       temple (>= 0.8.0)
       tilt
@@ -92,7 +92,7 @@ GEM
       rouge (~> 3.2)
     mime-types (3.3.1)
       mime-types-data (~> 3.2015)
-    mime-types-data (3.2021.0704)
+    mime-types-data (3.2021.0901)
     mini_portile2 (2.6.1)
     minitest (5.14.4)
     multi_json (1.15.0)
