@@ -1,0 +1,44 @@
+---
+title: Incremental authorization
+---
+
+# Incrementing an existing authorized invoice
+It is possible to increment an existing authorized invoice.
+the transaction has to be in authorized status and the PSP has to provide the feature.
+
+```shell
+curl -X POST https://api.processout.com/invoices/iv_MgeLS2Rr3ZGwjqOvDvYSuWx7ce88luXl/increment_authorization \
+    <%= partial "header-curl" %>
+    -d amount="10.00"
+```
+
+```javascript
+<%= partial "header-js" %>
+invoice.incrementAuthorization("iv_MgeLS2Rr3ZGwjqOvDvYSuWx7ce88luXl","10.00").then(
+    function(transaction) {
+        // The authorization amount was incremented and returned a transaction
+
+    }, function(err) {
+        // The The authorization amount could not be incremented
+    });
+```
+
+```python
+<%= partial "header-python" %>
+transaction = invoice.increment_authorization("iv_MgeLS2Rr3ZGwjqOvDvYSuWx7ce88luXl","10.00")
+```
+
+```ruby
+<%= partial "header-ruby" %>
+transaction = invoice.increment_authorization("iv_MgeLS2Rr3ZGwjqOvDvYSuWx7ce88luXl","10.00")
+```
+
+```php
+<%= partial "header-php" %>
+$transaction = $invoice->incrementAuthorization("10.00");
+```
+
+```go
+<%= partial "header-go" %>
+tr, _ := iv.IncrementAuthorization("10.00")
+```
