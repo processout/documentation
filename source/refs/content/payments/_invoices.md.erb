@@ -382,7 +382,8 @@ $transaction = $invoice->incrementAuthorization("10.00");
 tr, _ := iv.IncrementAuthorization("10.00")
 ```
 
-An existing invoice can be incremented if the PSP provide the feature and the transaction status is authorized.
+If a payment was requested with an estimated authorization, you can increase the authorization amount for that payment by submitting incremental authorizations.
+The incremental authorization feature is allowed just on the PSPs that support the feature and the transaction status has to be authorized.
 
 ### Void an invoice
 
