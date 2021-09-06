@@ -47,13 +47,13 @@ $transaction = $invoice->incrementAuthorization("10.00");
 tr, _ := iv.IncrementAuthorization("10.00")
 ```
 
-```iOS
-<%= partial "header-ios" %>
-tr, _ := iv.IncrementAuthorization("10.00")
+```swift
+<%= partial "lg-selector-mobile" %>
+ProcessOut.incrementAuthorizationAmount(invoiceId: "iv_MgeLS2Rr3ZGwjqOvDvYSuWx7ce88luXl", amount: 1, handler: handler)
 ```
 
-```Android
-<%= partial "header-android" %>
-tr, _ := iv.IncrementAuthorization("10.00")
+```java
+<%= partial "lg-selector-mobile" %>
+p.incrementAuthorizationAmount("iv_MgeLS2Rr3ZGwjqOvDvYSuWx7ce88luXl", 1, handler);
 ```
 </div>
