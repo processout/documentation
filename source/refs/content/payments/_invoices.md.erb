@@ -268,48 +268,6 @@ flag in the request. However, beware that your PSPs need to support partial
 captures as well, otherwise you'll need to to do a full capture followed by a
 partial refund to achieve a similar goal.
 
-### Incremental Authorization
-
-```shell
-curl -X POST https://api.processout.com/invoices/iv_MgeLS2Rr3ZGwjqOvDvYSuWx7ce88luXl/increment_authorization \
-    <%= partial "header-curl" %>
-    -d amount=10.00
-```
-
-```javascript
-<%= partial "header-js" %>
-invoice.incrementAuthorizationAmount("iv_MgeLS2Rr3ZGwjqOvDvYSuWx7ce88luXl","10.00").then(
-    function(transaction) {
-        // The authorization amount was incremented and returned a transaction
-
-    }, function(err) {
-        // The The authorization amount could not be incremented
-    });
-```
-
-```python
-<%= partial "header-python" %>
-# The source could also be a token tok_fKK4btSG7wd13ZZaevzhMcuNbpjcu1Zy
-transaction = invoice.increment_authorization("iv_MgeLS2Rr3ZGwjqOvDvYSuWx7ce88luXl","10.00")
-```
-
-```ruby
-<%= partial "header-ruby" %>
-transaction = invoice.increment_authorization("iv_MgeLS2Rr3ZGwjqOvDvYSuWx7ce88luXl","10.00")
-```
-
-```php
-<%= partial "header-php" %>
-$transaction = $invoice->incrementAuthorization("10.00");
-```
-
-```go
-<%= partial "header-go" %>
-tr, _ := iv.IncrementAuthorization("10.00")
-```
-
-Increment Authorization TODO add description
-
 ### Authorize only & auto capture
 
 ```shell
@@ -385,18 +343,46 @@ RFC3339 date at which the auto capture should be performed.
 Keep in a mind an authorization usually only lasts for 7 days, after which the capture
 may fail.
 
+### Increment authorization
 
+```shell
+curl -X POST https://api.processout.com/invoices/iv_MgeLS2Rr3ZGwjqOvDvYSuWx7ce88luXl/increment_authorization \
+    <%= partial "header-curl" %>
+    -d amount="10.00"
+```
 
+```javascript
+<%= partial "header-js" %>
+invoice.incrementAuthorization("iv_MgeLS2Rr3ZGwjqOvDvYSuWx7ce88luXl","10.00").then(
+    function(transaction) {
+        // The authorization amount was incremented and returned a transaction
 
+    }, function(err) {
+        // The The authorization amount could not be incremented
+    });
+```
 
+```python
+<%= partial "header-python" %>
+transaction = invoice.increment_authorization("iv_MgeLS2Rr3ZGwjqOvDvYSuWx7ce88luXl","10.00")
+```
 
+```ruby
+<%= partial "header-ruby" %>
+transaction = invoice.increment_authorization("iv_MgeLS2Rr3ZGwjqOvDvYSuWx7ce88luXl","10.00")
+```
 
+```php
+<%= partial "header-php" %>
+$transaction = $invoice->incrementAuthorization("10.00");
+```
 
+```go
+<%= partial "header-go" %>
+tr, _ := iv.IncrementAuthorization("10.00")
+```
 
-
-
-
-
+Incrementing an existing invoice Authorization
 
 ### Void an invoice
 
