@@ -95,8 +95,11 @@ eyJzaWduYXR1cmUiOiJNRVVDSVFEaTNZeTN1RWY5RXZPb2RZNDNkdmxhbFdScDR0NGtTL3IzTUpNRlpa
 
 #### Example code
 ```java
+// Optional add the contact information of the cardholder
+Contact contact = new Contact(address1, address2, city, state, countryCode, zip);
+
 // First create a card object containing the Google Pay token details
-Card card = new Card(Card.TokenType.googlepay, "base64encoded Google Pay token");
+Card card = new Card(Card.TokenType.googlepay, "base64encoded Google Pay token", cardHolderName, contact);
 
 // And then send the card data to ProcessOut to tokenize
 client.tokenize(card, new TokenCallback() {
@@ -129,6 +132,17 @@ using ProcessOut.js, as this is handled by the javascript code.
 #### Example code
 ```js
 var client = new ProcessOut.ProcessOut("test-proj_gAO1Uu0ysZJvDuUpOGPkUBeE3pGalk3x");
+
+var data = {
+    // It is possible to send cardholder information (optional)
+    name: document.getElementById("cardholdername").value,
+	contact: {
+        zip: document.getElementById("cardholderzip").value,
+        // Available contact fields:
+        // address1, address2, city, state, country_code, zip
+      },
+};
+
 // Note: payload is set to the Google Pay token received from the steps above
 var payload = {
     "signature": "MEUCIQDi3Yy3uEf9EvOodY43dvlalWRp4t4kS/r3MJMFZZS09QIgS/3yLTSKjF+kmGJiXIKdfmaR8r8aaZEAcI4OlCySPs0\u003d",
@@ -139,8 +153,9 @@ var payload = {
     "protocolVersion": "ECv2",
     "signedMessage": "{\"encryptedMessage\":\"sme1OeYeVwkc7lZfK1tT25KCrj1/pZDRXyCFvF9BCBXD6UQbP9+owMc1u7EIQ20j8i1uA2PIeivIxDfBkKMOgFdIyQliTuN4VO/x5r82gW0BOdRwwyWDL5TP+3HdGJ+hSMk/h1n6a1DmnNqjJKPe64Say4jlhOdY/X6k297Je9NO5eIsz/JBDfdl7KzNhARQsDFXaB03SrbtvEtOflQ9pWNDCuCKgDwL9cY5+OmqZrWW32F6N9RzeX9rpnq+p0t17n4F9ogstgQ52eh+El3BjR+78NimK2jLjFHHI5pWEpGlrshS+oQEgPS5tc4l2iES1IZIV2ZsfH7Gb1+ecBCgjhQyZQOw2fwB3jkVz5dOjASoYrTKRnJyNbWhIcjDmDSwzqq08JmX1KdShglZaCFYmIujKSV5Pa6ESUxrWuQU0T0FMzLEsOlJj1/muu2jEDVhBA4XVL3qmHHOQkU85cZU77JtbU1fMUypzPW6BGL5jQmGL5TDQa+5TDV0dHL8wLITRkbsa0VyLQtSLUSZ9A\\u003d\\u003d\",\"ephemeralPublicKey\":\"BBca3VePV8f6Y64YhTsuwsWo79EOKimbPnViqoHz+5WYR/1dtZu2kIMNsybNZlwnbi7n2keoVgEyh2vSRBEsW+o\\u003d\",\"tag\":\"PsKT9TGD6+f99dnnoZh0zTVge1U+s1cN1kn+g0cAUbc\\u003d\"}"
 };
+
 var token = new ProcessOut.PaymentToken(ProcessOut.TokenType.GooglePay, payload)
-client.tokenize(token, {},
+client.tokenize(token, data,
     function(token) {
         document.getElementById("success").innerHTML = "Success! Your created card token is " + token;
     },
