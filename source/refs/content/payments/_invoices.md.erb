@@ -382,8 +382,9 @@ $transaction = $invoice->incrementAuthorization("10.00");
 tr, _ := iv.IncrementAuthorization("10.00")
 ```
 
-If a payment was requested with an estimated authorization, you can increase the authorization amount for that payment by submitting incremental authorizations.
-The incremental authorization feature is allowed just on the PSPs that support the feature and the transaction status has to be authorized.
+you can increment the authorization amount of a payment by submitting incremental authorizations.
+The incremental property on the authorization request has to be set to true and the status of the transaction has to be authorized.
+(Note: Must also be supported by the PSP. Please contact our support to know more!)
 
 ### Void an invoice
 
