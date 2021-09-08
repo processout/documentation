@@ -3,12 +3,13 @@ title: Incremental authorization
 ---
 
 # Incrementing an existing authorized invoice
-you can increment the authorization amount of a payment by submitting incremental authorizations.
-The incremental property on the authorization request has to be set to true and the status of the transaction has to be authorized.
+It is possible to increment the authorization amount of a payment by submitting incremental authorizations.
+On the authorization request the value of the incremental property has to be true and the status of the transaction has to be authorized.
 (Note: Must also be supported by the PSP. Please contact our support to know more!)
 
 Use the details below to set up your request.
 
+### Backend SDK
 <div class="language-selector-wrapper">
 <%= partial "lg-selector" %>
 ```shell
@@ -49,6 +50,7 @@ tr, _ := iv.IncrementAuthorization("10.00")
 ```
 </div>
 
+### Mobile
 <div class="language-selector-wrapper">
 <%= partial "lg-selector-mobile" %>
 ```swift
@@ -59,3 +61,8 @@ ProcessOut.incrementAuthorizationAmount(invoiceId: "iv_MgeLS2Rr3ZGwjqOvDvYSuWx7c
 p.incrementAuthorizationAmount("iv_MgeLS2Rr3ZGwjqOvDvYSuWx7ce88luXl", 1, handler);
 ```
 </div>
+
+### Web
+```javascript
+incrementAuthorizationAmount("iv_MgeLS2Rr3ZGwjqOvDvYSuWx7ce88luXl",1,success,error)
+```
