@@ -343,6 +343,48 @@ RFC3339 date at which the auto capture should be performed.
 Keep in a mind an authorization usually only lasts for 7 days, after which the capture
 may fail.
 
+### Increment authorization
+
+```shell
+curl -X POST https://api.processout.com/invoices/iv_MgeLS2Rr3ZGwjqOvDvYSuWx7ce88luXl/increment_authorization \
+    <%= partial "header-curl" %>
+    -d amount="10.00"
+```
+
+```javascript
+<%= partial "header-js" %>
+invoice.incrementAuthorization("iv_MgeLS2Rr3ZGwjqOvDvYSuWx7ce88luXl","10.00").then(
+    function(transaction) {
+        // The authorization amount was incremented and returned a transaction
+
+    }, function(err) {
+        // The The authorization amount could not be incremented
+    });
+```
+
+```python
+<%= partial "header-python" %>
+transaction = invoice.increment_authorization("iv_MgeLS2Rr3ZGwjqOvDvYSuWx7ce88luXl","10.00")
+```
+
+```ruby
+<%= partial "header-ruby" %>
+transaction = invoice.increment_authorization("iv_MgeLS2Rr3ZGwjqOvDvYSuWx7ce88luXl","10.00")
+```
+
+```php
+<%= partial "header-php" %>
+$transaction = $invoice->incrementAuthorization("10.00");
+```
+
+```go
+<%= partial "header-go" %>
+tr, _ := iv.IncrementAuthorization("10.00")
+```
+
+It is possible to increment the amount authorized on a payment by submitting incremental authorizations.
+On the authorization request the value of the incremental property has to be true and the status of the transaction has to be authorized.
+(Note: Must also be supported by the PSP. Please contact our support to know more!)
 
 ### Void an invoice
 
