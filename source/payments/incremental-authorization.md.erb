@@ -9,7 +9,19 @@ On the authorization request the value of the incremental property has to be tru
 
 Use the details below to set up your request.
 
-### Backend SDK
+### Setup authorization request
+<div class="language-selector-wrapper">
+<%= partial "lg-selector" %>
+```shell
+curl -X POST https://api.processout.com/invoices/iv_MgeLS2Rr3ZGwjqOvDvYSuWx7ce88luXl/authorize \
+    <%= partial "header-curl" %>
+    -d incremental=true
+    -d source={customer or token}
+```
+</div>
+
+### Increment authorization
+#### Backend SDK
 <div class="language-selector-wrapper">
 <%= partial "lg-selector" %>
 ```shell
@@ -50,7 +62,7 @@ tr, _ := iv.IncrementAuthorization("10.00")
 ```
 </div>
 
-### Mobile
+#### Mobile
 <div class="language-selector-wrapper">
 <%= partial "lg-selector-mobile" %>
 ```swift
@@ -62,7 +74,7 @@ p.incrementAuthorizationAmount("iv_MgeLS2Rr3ZGwjqOvDvYSuWx7ce88luXl", 1, handler
 ```
 </div>
 
-### Web
+#### Web
 ```javascript
 incrementAuthorizationAmount("iv_MgeLS2Rr3ZGwjqOvDvYSuWx7ce88luXl",1,success,error)
 ```
