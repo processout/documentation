@@ -18,6 +18,40 @@ curl -X POST https://api.processout.com/invoices/iv_MgeLS2Rr3ZGwjqOvDvYSuWx7ce88
     -d incremental=true
     -d source={customer or token}
 ```
+```javascript
+<%= partial "header-js" %>
+invoice.authorize("source",{"incremental" : true}).then(
+    function(transaction) {
+        // The invoice was authorized and returned a transaction
+    }, function(err) {
+        // The invoice could not be authorized
+    });
+```
+
+```python
+<%= partial "header-python" %>
+transaction = invoice.authorize("source",{"incremental" : true})
+```
+
+```ruby
+<%= partial "header-ruby" %>
+transaction = invoice.authorize("source",{"incremental" => true})
+```
+
+```php
+<%= partial "header-php" %>
+$transaction = $invoice->authorize("source",array("incremental"=>true);
+```
+
+```go
+<%= partial "header-go" %>
+opt := InvoiceAuthorizeParameters{
+    Invoice: &Invoice{
+        Incremental: true,
+    },
+}
+tr, _ := iv.Authorize("source",opt)
+```
 </div>
 
 ### Increment authorization
