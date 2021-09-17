@@ -169,4 +169,21 @@ client.tokenize(token, data,
 ## 3. Charge the customer
 Once you have successfully tokenized the Google Pay token on ProcessOut, you will receive back
 a `card.id`. This can be sent to your backend, and can be used to [charge your customers &nearr;](https://docs.processout.com/payments/capture-a-payment/)
-or [save it on a customer token &nearr;](https://docs.processout.ninja/payments/save-token-and-capture-later/#step-2-create-a-customer-token)
+or [save it on a customer token &nearr;](https://docs.processout.ninja/payments/save-token-and-capture-later/#step-2-create-a-customer-token).
+
+Note: We only recommend capturing the transaction from the backend if you have made the
+request to Google with `allowedAuthMethods` to be solely `CRYPTOGRAM_3DS` otherwise the
+transaction may be subject to SCA, as explained in the next section.
+
+### Strong Customer Authentication
+ProcessOut.js and ProcessOut mobile SDKs are SCA and 3DS2-ready, meaning that the new
+requirements mandated by new regulations in Europe will be handled automatically for you.
+
+If you created a payment request on Google with `allowedAuthMethods` including `PAN_ONLY`, it
+may be subject to SCA (Strong Customer Authentication). In order to ensure you are ready to
+support SCA, please refer to the following relevant documentation:
+
+<div class="info-box">This is not required if you solely select "CRYPTOGRAM_3DS" as your auth method.</div>
+
+* [ProcessOut.JS 3DS2 support &nearr;](https://docs.processout.com/payments/migrating-to-sca/#3-process-payments-with-processout-js)
+* [Mobile SDK 3DS2 support &nearr;](https://docs.processout.com/payments/mobile-sdks-reference/#3ds2-handlers)
