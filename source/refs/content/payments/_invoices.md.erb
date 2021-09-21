@@ -78,7 +78,7 @@ using the ProcessOut API. To start using invoices, [let's create one](#create-an
 <span class="console-font">**city**</span><br />*string*<br /> | City where the shipment has to be sent<br /><span style="opacity: 0.5">*Max 80 characters long*</span>
 <span class="console-font">**country_code**</span><br />*string*<br /> | Shipment's address country code (ex: `US`, `FR`) where it has to be sent<br /><span style="opacity: 0.5">*Must be a valid ISO 3166 2 characters country code*</span>
 <span class="console-font">**zip**</span><br />*string*<br /> | ZIP code where the shipment has to be sent<br /><span style="opacity: 0.5">*Max 16 characters long*</span>
-<span class="console-font">**phone_number**</span><br />*string*<br /> | Phone number of the shipment recipent<br /><span style="opacity: 0.5">*Max 16 characters long*</span>
+<span class="console-font">**phone_number**</span><br />*string*<br /> | Phone number of the shipment recipent<br /><span style="opacity: 0.5">*Max 17 characters long (Note: "+" will be treated as "00")*</span>
 <span class="console-font">**expects_shipping_at**</span><br />*RFC1123 date or timestamp*<br /> | Date at which the shipment is expected to be sent
 
 ##### Tax attributes
